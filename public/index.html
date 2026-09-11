@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Kings Perú S.A.C. - Lo mejor en Tecnología y Cómputo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- Cabecera Superior -->
+  <header class="main-header">
+    <div class="header-top">
+      <span>Envíos a todo el Perú | Soporte oficial Memory Kings S.A.C.</span>
+      <span id="userStatusText">Bienvenido a la tienda online</span>
+    </div>
+
+    <div class="header-container">
+      <a href="/index.html" class="brand-logo">
+        <span>MEMORY KINGS</span>
+        <span class="brand-badge">OFICIAL</span>
+      </a>
+
+      <!-- Buscador en Vivo -->
+      <form class="search-form" id="searchForm" onsubmit="return false;">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="Buscar procesadores, tarjetas gráficas, laptops..."
+        >
+      </form>
+
+      <!-- Acciones de Usuario y Carrito -->
+      <div class="header-actions">
+        <div id="userNavActions">
+          <a href="/login.html" class="btn-nav-action" id="btnLoginNav">Iniciar Sesión</a>
+        </div>
+
+        <button class="btn-cart" id="btnOpenCart">
+          <span>Carrito</span>
+          <span class="cart-count-badge" id="cartCountBadge">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Barra de Categorías -->
+    <nav class="subnav">
+      <div class="subnav-container" id="categoryNav">
+        <button class="subnav-link active" data-category="all">Todos los Productos</button>
+        <!-- Categorías cargadas dinámicamente -->
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenedor Principal -->
+  <main class="main-container">
+    
+    <!-- Hero Banner Promocional -->
+    <section class="hero-banner">
+      <div class="hero-content">
+        <h1>Especialistas en Hardware & PC Gamer</h1>
+        <p>Encuentra las mejores marcas en componentes de última generación con garantía oficial y despacho inmediato.</p>
+      </div>
+    </section>
+
+    <!-- Sección del Catálogo -->
+    <section>
+      <div class="catalog-header">
+        <h2 class="catalog-title" id="catalogTitle">Catálogo de Productos</h2>
+        <div id="productsCount" style="color: var(--text-secondary); font-size: 0.9rem;">
+          Cargando inventario...
+        </div>
+      </div>
+
+      <!-- Cuadrícula Dinámica de Productos -->
+      <div class="products-grid" id="productsGrid">
+        <!-- Renderizado dinámico desde catalogo.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Drawer Lateral: Carrito de Compras -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>Mi Carrito de Compras</h3>
+      <button class="btn-close-drawer" id="btnCloseCart">&times;</button>
+    </div>
+
+    <div class="cart-items-body" id="cartItemsContainer">
+      <!-- Items renderizados dinámicamente con carrito.js -->
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal">S/ 0.00</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>I.G.V. (18%):</span>
+        <span id="cartIgv">S/ 0.00</span>
+      </div>
+      <div class="cart-summary-row total">
+        <span>Total a Pagar:</span>
+        <span id="cartTotal">S/ 0.00</span>
+      </div>
+
+      <button class="btn-checkout" id="btnCheckout" disabled>
+        Continuar con la Compra
+      </button>
+    </div>
+  </aside>
+
+  <!-- Modal de Finalización de Compra (Checkout) -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Confirmar y Generar Pedido</h3>
+        <button class="btn-close-drawer" id="btnCloseCheckout">&times;</button>
+      </div>
+      <form id="checkoutForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Cliente / Solicitante</label>
+            <input type="text" id="orderClientName" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Correo Electrónico</label>
+            <input type="email" id="orderClientEmail" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Dirección de Entrega en Perú *</label>
+            <textarea id="orderAddress" class="form-control" rows="2" placeholder="Ej. Av. Arequipa 1234, Dpto 402, Lince, Lima" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Método de Pago</label>
+            <select id="orderPaymentMethod" class="form-control">
+              <option value="TARJETA_CREDITO">Tarjeta de Crédito / Débito (Visa, Mastercard)</option>
+              <option value="YAPE_PLIN">Transferencia Móvil (Yape / Plin)</option>
+              <option value="PAGO_CONTRAENTREGA">Pago Contraentrega en Efectivo</option>
+            </select>
+          </div>
+          <div style="background-color: #f1f5f9; padding: 12px; border-radius: 6px; font-size: 0.9rem;">
+            <strong>Resumen Final: </strong> <span id="modalOrderTotal" style="color: var(--primary-dark); font-weight: 800;">S/ 0.00</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-sm btn-secondary" id="btnCancelCheckout">Cancelar</button>
+          <button type="submit" class="btn-sm btn-primary" id="btnConfirmOrder">Emitir Orden de Compra</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Contenedor Toast -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Memory Kings Perú S.A.C.</h4>
+        <p>Líderes en venta y distribución de tecnología, accesorios y componentes de cómputo en el Perú.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Horario de Atención</h4>
+        <p>Lunes a Sábado: 9:00 AM - 8:00 PM</p>
+        <p>Atención al Cliente: (01) 500-8000</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sedes Principales</h4>
+        <p>• CC. Compupalace - Miraflores</p>
+        <p>• CC. Cyberplaza - Centro de Lima</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Memory Kings Perú S.A.C. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- Scripts Vanilla JS -->
+  <script src="/js/catalogo.js"></script>
+  <script src="/js/carrito.js"></script>
+</body>
+</html>
