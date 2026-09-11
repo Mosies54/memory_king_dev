@@ -1,0 +1,27 @@
+{
+  "name": "memory-kings-pa2",
+  "version": "1.0.0",
+  "description": "Plataforma Web de E-commerce y ERP para Memory Kings Perú S.A.C.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [
+    "memory-kings",
+    "ecommerce",
+    "erp",
+    "nodejs",
+    "express",
+    "postgresql",
+    "vanillajs"
+  ],
+  "author": "Memory Kings Perú S.A.C. Dev Team",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.13.3"
+  }
+}
