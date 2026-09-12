@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Verificar si ya hay una sesión activa
   const currentUser = JSON.parse(localStorage.getItem('mk_user'));
   if (currentUser) {
-    if (currentUser.rol === 'ADMINISTRADOR' || currentUser.rol === 'ALMACENERO') {
+    const currentRole = (currentUser.rol || '').toUpperCase();
+    if (currentRole === 'ADMINISTRADOR' || currentRole === 'ALMACENERO') {
       window.location.href = '/admin.html';
       return;
     }
@@ -58,7 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Redirección condicionada por Rol
       setTimeout(() => {
-        if (user.rol === 'ADMINISTRADOR' || user.rol === 'ALMACENERO') {
+        const userRole = (user.rol || '').toUpperCase();
+        if (userRole === 'ADMINISTRADOR' || userRole === 'ALMACENERO') {
           window.location.href = '/admin.html';
         } else {
           window.location.href = '/index.html';

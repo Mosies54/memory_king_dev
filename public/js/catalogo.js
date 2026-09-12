@@ -27,7 +27,8 @@ function setupUserNav() {
       userStatusText.textContent = `Hola, ${user.nombre} (${user.rol})`;
     }
 
-    const isAdmin = user.rol === 'ADMINISTRADOR' || user.rol === 'ALMACENERO';
+    const userRole = (user.rol || '').toUpperCase();
+    const isAdmin = userRole === 'ADMINISTRADOR' || userRole === 'ALMACENERO';
 
     userNavActions.innerHTML = `
       <div style="display: flex; align-items: center; gap: 8px;">
