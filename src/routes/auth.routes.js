@@ -2,7 +2,7 @@
 const router = express.Router();
 const db = require('../config/db');
 
-// POST /api/auth/login - Autenticacion de usuarios con esquema real
+// POST /api/auth/login
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -14,7 +14,6 @@ router.post('/login', async (req, res) => {
       });
     }
 
-    // Consulta adaptada a usuarios (id_usuario, nombre_completo, correo, password, id_rol) y roles (id_rol, nombre)
     const query = `
       SELECT 
         u.id_usuario AS id, 

@@ -19,8 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // 1. Verificación de Seguridad y Sesión
 function verifyAdminAuth() {
   const user = JSON.parse(localStorage.getItem('mk_user'));
+  const userRole = (user?.rol || '').toUpperCase();
 
-  if (!user || (user.rol !== 'ADMINISTRADOR' && user.rol !== 'ALMACENERO')) {
+  if (!user || (userRole !== 'ADMINISTRADOR' && userRole !== 'ALMACENERO')) {
     alert('Acceso Restringido. Debe iniciar sesión con una cuenta de Administrador o Almacenero.');
     window.location.href = '/login.html';
     return;
