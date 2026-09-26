@@ -11,7 +11,7 @@
   <!-- Cabecera Superior -->
   <header class="main-header">
     <div class="header-top">
-      <span>Envíos a todo el Perú | Soporte oficial Memory Kings S.A.C.</span>
+      <span>Envíos a todo el Perú | Garantía Oficial Memory Kings | Atención: (01) 500-8000</span>
       <span id="userStatusText">Bienvenido a la tienda online</span>
     </div>
 
@@ -27,7 +27,7 @@
           type="text" 
           id="searchInput" 
           class="search-input" 
-          placeholder="Buscar procesadores, tarjetas gráficas, laptops..."
+          placeholder="Buscar procesadores, tarjetas gráficas, laptops, memorias..."
         >
       </form>
 
@@ -44,11 +44,21 @@
       </div>
     </div>
 
-    <!-- Barra de Categorías -->
+    <!-- Barra de Categorías (Dropdown y Accesos Directos sin Scroll Horizontal) -->
     <nav class="subnav">
-      <div class="subnav-container" id="categoryNav">
-        <button class="subnav-link active" data-category="all">Todos los Productos</button>
-        <!-- Categorías cargadas dinámicamente -->
+      <div class="subnav-container">
+        <div class="category-dropdown-wrapper">
+          <button class="btn-category-dropdown" id="btnCategoryDropdown">
+            <span>Categorías ▾</span>
+          </button>
+          <div class="category-dropdown-menu" id="categoryDropdownMenu">
+            <!-- Cargado dinámicamente desde catalogo.js -->
+          </div>
+        </div>
+
+        <div class="quick-categories" id="quickCategories">
+          <!-- Accesos directos principales cargados dinámicamente -->
+        </div>
       </div>
     </nav>
   </header>
@@ -56,11 +66,11 @@
   <!-- Contenedor Principal -->
   <main class="main-container">
     
-    <!-- Hero Banner Promocional -->
-    <section class="hero-banner">
+    <!-- Hero Banner Promocional Limpio y Compacto -->
+    <section class="hero-banner" id="heroBanner">
       <div class="hero-content">
-        <h1>Especialistas en Hardware & PC Gamer</h1>
-        <p>Encuentra las mejores marcas en componentes de última generación con garantía oficial y despacho inmediato.</p>
+        <h1>Especialistas en Hardware & PC Master Race</h1>
+        <p>Encuentra marcas líderes mundiales con garantía oficial Memory Kings y despacho inmediato en todo el Perú.</p>
       </div>
     </section>
 
